@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+  <title>REALMADU STORE.com</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: #f9fafb;
+    }
+  </style>
+</head>
+
+<body class="min-h-screen flex items-center justify-center px-6 py-12 bg-gray-50">
+  <section class="bg-white rounded-2xl shadow-xl max-w-5xl w-full grid grid-cols-1 lg:grid-cols-12 overflow-hidden">
+    <!-- Left panel: Image + Branding -->
+    <div class="relative hidden lg:flex lg:col-span-5 xl:col-span-6 bg-gradient-to-tr from-yellow-400 via-yellow-300 to-yellow-500 p-12 items-center justify-center">
+      <img
+        src="https://images.unsplash.com/photo-1536788567643-8c2368376526?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fGhvbmV5fGVufDB8fDB8fHww"
+        alt="Foto madu alam"
+        class="absolute inset-0 w-full h-full object-cover opacity-20"
+      />
+      <div class="relative z-10 text-white max-w-md text-center mx-auto">
+        <a href="#" class="inline-block mb-8">
+          <img src="madu alam .png" alt="Logo REALMADU" class="w-24 h-24 rounded-full mx-auto object-cover" />
+        </a>
+        <h2 class="text-4xl font-extrabold leading-tight mb-4 tracking-wide" style="color: rgb(255, 255, 255);">REALMADU</h2>
+        <p class="text-lg font-medium leading-relaxed tracking-wide" style="color: rgb(245, 245, 245); font-family: cursive;">
+          Madu adalah cairan manis alami yang dihasilkan lebah dari nektar bunga. Kaya akan nutrisi, madu
+          bermanfaat untuk kesehatan dan sebagai pemanis alami.
+        </p>
+      </div>
+    </div>
+
+    <!-- Right panel: Login form -->
+    <main
+      class="lg:col-span-7 xl:col-span-6 bg-white p-10 sm:p-14 flex flex-col justify-center rounded-tr-2xl rounded-br-2xl shadow-inner">
+      <h1 class="text-3xl font-bold text-gray-900 mb-8 text-center tracking-wide">Masuk ke Akun Anda</h1>
+
+      <form action="halaman utama.html" method="GET" class="space-y-7">
+        <div>
+          <label for="Email" class="block text-sm font-semibold text-gray-700 mb-2">Email</label>
+          <input
+            type="email"
+            id="Email"
+            name="email"
+            required
+            placeholder="email@example.com"
+            class="w-full rounded-xl border border-gray-300 px-5 py-3 text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-4 focus:ring-yellow-400 focus:border-yellow-400 transition"
+          />
+        </div>
+
+        <div>
+          <label for="Password" class="block text-sm font-semibold text-gray-700 mb-2">Password</label>
+          <input
+            type="password"
+            id="Password"
+            name="password"
+            required
+            placeholder="••••••••"
+            class="w-full rounded-xl border border-gray-300 px-5 py-3 text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-4 focus:ring-yellow-400 focus:border-yellow-400 transition"
+          />
+        </div>
+
+        <div class="flex items-center space-x-3">
+          <input
+            type="checkbox"
+            id="MarketingAccept"
+            name="marketing_accept"
+            class="h-5 w-5 rounded border-gray-300 text-yellow-500 focus:ring-yellow-400"
+          />
+          <label for="MarketingAccept" class="text-sm text-gray-600 select-none">
+            Saya ingin menerima email tentang acara, pembaruan produk, dan pengumuman perusahaan.
+          </label>
+        </div>
+
+        <button
+          type="submit"
+          class="w-full rounded-xl bg-yellow-500 px-6 py-4 text-white font-semibold shadow-md hover:bg-yellow-600 focus:outline-none focus:ring-4 focus:ring-yellow-300 transition"
+        >
+          LOGIN
+        </button>
+      </form>
+    </main>
+  </section>
+</body>
+
+</html>

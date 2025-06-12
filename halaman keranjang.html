@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Keranjang Belanja - REALMADU</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-50">
+    <div class="max-w-3xl mx-auto p-6">
+        <h1 class="text-2xl font-bold mb-4">Keranjang Belanja Anda</h1>
+        <div id="cart-list" class="space-y-4"></div>
+
+        <div id="cart-summary" class="mt-6 text-right font-semibold text-lg">
+            Total: Rp <span id="total-amount">0</span>
+        </div>
+
+        <div class="mt-6 flex justify-between">
+            <!-- Tombol kembali -->
+            <button onclick="history.back()"
+                class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-semibold py-2 px-4 rounded">
+                ← Kembali
+            </button>
+
+            <!-- Tombol checkout -->
+            <a href="halaman CO.html"
+                class="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded inline-block">
+                Lanjutkan ke Checkout →
+            </a>
+            <script>
+                // ... fungsi renderCart() dan removeItem() tetap
+
+                // Tambahkan event listener untuk tombol checkout
+                const checkoutButton = document.querySelector('a[href="halaman CO.html"]');
+                checkoutButton.addEventListener('click', () => {
+                    localStorage.setItem('checkout', JSON.stringify(cart));
+                });
+
+                renderCart();
+            </script>
+
+        </div>
+    </div>
+
+    <script>
+        const cartList = document.getElementById('cart-list');
+        const totalAmount = document.getElementById('total-amount');
+
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+        function renderCart() {
+            cartList.innerHTML = '';
+            if (cart.length === 0) {
+                cartList.innerHTML = '<p class="text-gray-600">Keranjang Anda kosong.</p>';
+                totalAmount.innerText = '0';
+                return;
+            }
+
+            let total = 0;
+            cart.forEach((item, index) => {
+                total += item.price;
+                const div = document.createElement('div');
+                div.className = 'flex justify-between items-center bg-white p-4 shadow rounded';
+                div.innerHTML = `
+          <div>
+            <p class="font-medium">${item.name}</p>
+            <p class="text-sm text-gray-500">Rp ${item.price.toLocaleString()}</p>
+          </div>
+          <button onclick="removeItem(${index})"
+            class="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded text-sm">Hapus</button>
+        `;
+                cartList.appendChild(div);
+            });
+            totalAmount.innerText = total.toLocaleString();
+        }
+
+        function removeItem(index) {
+            cart.splice(index, 1);
+            localStorage.setItem('cart', JSON.stringify(cart));
+            renderCart();
+        }
+
+        renderCart();
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>REALMADU.com</title>
+  <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+  <style>
+    header.sticky {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: white;
+      box-shadow: 0 2px 4px rgb(0 0 0 / 0.1);
+    }
+  </style>
+</head>
+
+<body class="bg-gray-50">
+
+  <!-- Sticky Header -->
+  <header class="sticky bg-white shadow-sm">
+    <div class="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
+      <div class="flex h-16 items-center justify-between">
+
+        <!-- Logo -->
+        <div class="flex items-center space-x-2">
+          <!-- Placeholder foto bulat -->
+          <div class="w-8 h-8 rounded-full bg-gray-300 overflow-hidden">
+            <img src="madu alam .png" alt="Logo" class="w-full h-full object-cover" />
+          </div>
+          <span class="text-xl font-bold">REALMADU</span>
+        </div>
+
+
+        <!-- Navigation -->
+        <div class="hidden md:flex md:items-center md:gap-8">
+          <nav aria-label="Primary Navigation">
+            <ul class="flex items-center gap-6 text-sm text-gray-600">
+              <li><a href="About us.html" class="hover:text-yellow-600 transition">About us</a></li>
+              <li><a href="company.html" class="hover:text-yellow-600 transition">Company</a></li>
+              <li><a href="katalog.html" class="hover:text-yellow-600 transition">Katalog</a></li>
+            </ul>
+          </nav>
+
+          <!-- Cart -->
+          <div class="relative ml-6">
+            <button id="cart-button" class="relative p-2 text-gray-600 hover:text-gray-900 focus:outline-none"
+              aria-label="Toggle Cart Dropdown">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2"
+                viewBox="0 0 24 24">
+                <path d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2 9m13-9l2 9m-5-9v0m-4 0v0" />
+              </svg>
+              <span id="cart-count"
+                class="absolute -top-1 -right-1 px-1.5 py-0.5 text-xs font-bold text-white bg-red-600 rounded-full">0</span>
+            </button>
+            <div id="cart-dropdown"
+              class="absolute right-0 z-20 mt-2 w-64 rounded-md border border-gray-200 bg-white shadow-lg hidden">
+              <div class="p-4 text-sm text-gray-700">
+                <p id="cart-status">Keranjang Anda kosong.</p>
+                <a href="halaman keranjang.html"
+                  class="mt-4 block w-full rounded bg-yellow-500 px-4 py-2 text-center text-white hover:bg-yellow-600">Lihat
+                  Keranjang</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Profile Picture with Dropdown -->
+          <div class="relative ml-6">
+            <button id="profile-button" type="button"
+              class="overflow-hidden rounded-full border border-gray-300 shadow-inner focus:outline-none">
+              <img
+                src="https://plus.unsplash.com/premium_photo-1692948505024-20a1288d0b65?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OXx8dmVrdG9yJTIwaHVtYW4lMjBmYWNlJTIwcHJvZmlsZXxlbnwwfHwwfHx8MA%3D%3D"
+                alt="Profile" class="h-10 w-10 object-cover" />
+            </button>
+
+            <div id="profile-dropdown"
+              class="absolute right-0 mt-2 w-40 bg-white rounded-md shadow-lg border border-gray-200 hidden z-30">
+              <a href="profile.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Profil</a>
+              <a href="halaman login.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Logout</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Hamburger Menu -->
+        <div class="md:hidden">
+          <button type="button" class="rounded bg-gray-100 p-2 text-gray-600 hover:text-gray-900">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="2"
+              viewBox="0 0 24 24">
+              <path d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Produk Section -->
+  <section>
+    <div class="mx-auto max-w-screen-xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8">
+      <header class="text-center">
+        <h2 class="text-xl font-bold text-gray-900 sm:text-3xl">REAL MADU</h2>
+        <p class="mx-auto mt-4 max-w-md text-gray-500">
+          Secara ilmiah, madu mengandung berbagai senyawa penting, seperti glukosa, fruktosa, vitamin, mineral, dan
+          antioksidan.
+        </p>
+      </header>
+
+      <ul class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <!-- Produk -->
+        <li>
+          <div class="group block overflow-hidden rounded-lg bg-white shadow hover:shadow-lg transition">
+            <img src="https://images.unsplash.com/photo-1555035900-54c17f3bc1eb?w=500&auto=format&fit=crop&q=60"
+              alt="Madu Syamil"
+              class="h-[350px] w-full object-cover group-hover:scale-105 transition-transform duration-500 sm:h-[450px]" />
+            <div class="p-4 text-center">
+              <p class="mt-2 font-semibold tracking-wider text-gray-900">MADU SYAMIL</p>
+              <div class="flex justify-center gap-2 mt-2">
+                <button onclick="addToCart('Madu Syamil', 55000)"
+                  class="bg-yellow-500 text-white px-3 py-1 rounded">Keranjang</button>
+                <a href="halaman langsung CO.html">
+                  <button onclick="checkoutProduct('Madu Syamil', 55000)"
+                    class="bg-green-600 text-white px-3 py-1 rounded">Checkout</button>
+                </a>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="group block overflow-hidden rounded-lg bg-white shadow hover:shadow-lg transition">
+            <img
+              src="https://plus.unsplash.com/premium_photo-1663957861996-8093b48a22e6?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OXx8aG9uZXl8ZW58MHx8MHx8fDA%3D"
+              alt="Madu Hutan"
+              class="h-[350px] w-full object-cover group-hover:scale-105 transition-transform duration-500 sm:h-[450px]" />
+            <div class="p-4 text-center">
+              <p class="mt-2 font-semibold tracking-wider text-gray-900">MADU HUTAN</p>
+              <div class="flex justify-center gap-2 mt-2">
+                <button onclick="addToCart('Madu Hutan', 65000)"
+                  class="bg-yellow-500 text-white px-3 py-1 rounded">Keranjang</button>
+                <a href="halaman langsung CO.html">
+                  <button onclick="checkoutProduct('Madu Hutan', 65000)"
+                    class="bg-green-600 text-white px-3 py-1 rounded">Checkout</button>
+                </a>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="group block overflow-hidden rounded-lg bg-white shadow hover:shadow-lg transition">
+            <img
+              src="https://images.unsplash.com/photo-1654515722385-c684c5331c04?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjB8fGhvbmV5fGVufDB8fDB8fHww"
+              alt="Madu Hutan"
+              class="h-[350px] w-full object-cover group-hover:scale-105 transition-transform duration-500 sm:h-[450px]" />
+            <div class="p-4 text-center">
+              <p class="mt-2 font-semibold tracking-wider text-gray-900">MADU KWAUTEH</p>
+              <div class="flex justify-center gap-2 mt-2">
+                <button onclick="addToCart('Madu Hutan', 70000)"
+                  class="bg-yellow-500 text-white px-3 py-1 rounded">Keranjang</button>
+                <a href="halaman langsung CO.html">
+                  <button onclick="checkoutProduct('Madu Hutan', 70000)"
+                    class="bg-green-600 text-white px-3 py-1 rounded">Checkout</button>
+                </a>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="group block overflow-hidden rounded-lg bg-white shadow hover:shadow-lg transition">
+            <img
+              src="https://images.unsplash.com/photo-1471943311424-646960669fbc?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fGhvbmV5fGVufDB8fDB8fHww"
+              alt="Madu Hutan"
+              class="h-[350px] w-full object-cover group-hover:scale-105 transition-transform duration-500 sm:h-[450px]" />
+            <div class="p-4 text-center">
+              <p class="mt-2 font-semibold tracking-wider text-gray-900">MADU ALAM</p>
+              <div class="flex justify-center gap-2 mt-2">
+                <button onclick="addToCart('Madu Hutan', 100000)"
+                  class="bg-yellow-500 text-white px-3 py-1 rounded">Keranjang</button>
+                <a href="halaman langsung CO.html">
+                  <button onclick="checkoutProduct('Madu Hutan', 100000)"
+                    class="bg-green-600 text-white px-3 py-1 rounded">Checkout</button>
+                </a>
+              </div>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="bg-yellow-600 bg-opacity-80 py-6">
+      <div class="mx-auto max-w-screen-xl px-6 sm:px-12 lg:px-14">
+        <div
+          class="flex flex-col md:flex-row md:justify-between md:items-center text-white text-sm font-medium space-y-6 md:space-y-0">
+
+          <div class="text-center md:text-left">
+            <h3 class="text-lg font-semibold mb-2">Contact Us</h3>
+            <div class="flex justify-center md:justify-start space-x-4">
+              <a href="#" aria-label="Instagram" class="hover:text-gray-400 transition">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+                  <path
+                    d="M7.75 2A5.75 5.75 0 002 7.75v8.5A5.75 5.75 0 007.75 22h8.5A5.75 5.75 0 0022 16.25v-8.5A5.75 5.75 0 0016.25 2h-8.5zM12 7.5a4.5 4.5 0 110 9 4.5 4.5 0 010-9zm5.25-.5a1.25 1.25 0 110 2.5 1.25 1.25 0 010-2.5z" />
+                </svg>
+              </a>
+              <a href="#" aria-label="Facebook" class="hover:text-gray-400 transition">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+                  <path
+                    d="M22 12a10 10 0 10-11.5 9.9v-7H8v-3h2.5V9.5a3.5 3.5 0 013.5-3.5h2v3h-2a.5.5 0 00-.5.5V12H18l-.5 3h-2v7A10 10 0 0022 12z" />
+                </svg>
+              </a>
+              <a href="#" aria-label="Whatsapp" class="hover:text-gray-400 transition">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+                  <path
+                    d="M20.5 3.5a10 10 0 00-17 13.75L3 21l4.75-1.5A10 10 0 0020.5 3.5zm-4.7 13.15c-.25.7-1.3 1.3-1.9 1.4-.5.1-1.1.15-3.2-1.5a11.1 11.1 0 01-4-5c.5-1 1.2-1.5 1.7-1.5.5 0 1 .05 1.4.35.3.2.7.7 1.2 1.5.4.5.7.7 1.1.7s.8-.1 1.2-.3c.3-.2.5-.5.7-.8.2-.3.3-.6.4-.9 0-.3-.1-.5-.2-.7l-1-1.6c-.3-.3-1-.8-1.6-1.1-.5-.3-1-.5-1.4-.6a5.1 5.1 0 00-2.8 1.4 10 10 0 001.5 5.5c1.3 2.3 3.5 4.3 5.7 4.8.9.2 1.6.2 2 .1a4.4 4.4 0 001.5-.7c.4-.3.7-.7.9-1.3.2-.5.1-1-.2-1.6z" />
+                </svg>
+              </a>
+              <a href="mailto:info@example.com" aria-label="Email" class="hover:text-gray-400 transition">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" stroke="currentColor"
+                  stroke-width="2" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round"
+                    d="M16 12H8m8-4H8m8 8H8m-3 4h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                </svg>
+              </a>
+            </div>
+          </div>
+
+          <div class="text-center md:text-left">
+            <h3 class="text-lg font-semibold mb-2">Opening Hours</h3>
+            <p>Monday - Sunday: 08:00 - 20:00</p>
+          </div>
+
+          <div class="text-center md:text-right">
+            <p class="text-sm">&copy; 2025 OurCompany. We Walk The Talk </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- Tambahan script ini letakkan di bagian bawah sebelum </body> -->
+  <script>
+    const cartButton = document.getElementById('cart-button');
+    const cartDropdown = document.getElementById('cart-dropdown');
+    const profileButton = document.getElementById('profile-button');
+    const profileDropdown = document.getElementById('profile-dropdown');
+    const cartStatus = document.getElementById('cart-status');
+    const cartCount = document.getElementById('cart-count');
+
+    let cartItems = [];
+
+    function addToCart(name, price) {
+      cartItems.push({ name, price });
+      localStorage.setItem('cart', JSON.stringify(cartItems));
+      cartCount.innerText = cartItems.length;
+      cartStatus.innerText = `${cartItems.length} produk dalam keranjang Anda.`;
+    }
+
+    function checkoutProduct(name, price) {
+      localStorage.setItem('checkout', JSON.stringify({ name, price }));
+      window.location.href = 'checkout.html';
+    }
+
+    cartButton.addEventListener('click', () => {
+      cartDropdown.classList.toggle('hidden');
+      profileDropdown.classList.add('hidden');
+    });
+
+    profileButton.addEventListener('click', () => {
+      profileDropdown.classList.toggle('hidden');
+      cartDropdown.classList.add('hidden');
+    });
+
+    document.addEventListener('click', (event) => {
+      if (!cartButton.contains(event.target) && !cartDropdown.contains(event.target)) {
+        cartDropdown.classList.add('hidden');
+      }
+      if (!profileButton.contains(event.target) && !profileDropdown.contains(event.target)) {
+        profileDropdown.classList.add('hidden');
+      }
+    });
+
+    //  Sinkronisasi data keranjang dari localStorage saat halaman dibuka
+    document.addEventListener('DOMContentLoaded', () => {
+      const savedCart = JSON.parse(localStorage.getItem('cart')) || [];
+      cartItems = savedCart;
+      cartCount.innerText = savedCart.length;
+
+      if (savedCart.length > 0) {
+        cartStatus.innerText = `${savedCart.length} produk dalam keranjang Anda.`;
+      } else {
+        cartStatus.innerText = 'Keranjang Anda kosong.';
+      }
+    });
+
+    //  Optional: Reload jika user kembali dari halaman lain (biar data keranjang benar-benar update)
+    window.addEventListener('pageshow', (event) => {
+      if (event.persisted || (window.performance && performance.navigation.type === 2)) {
+        window.location.reload();
+      }
+    });
+  </script>
+
+</body>
+
+</html>

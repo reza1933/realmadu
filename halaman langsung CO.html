@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<header class="sticky top-0 z-50 bg-white shadow-sm">
+    <div class="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
+        <div class="flex h-16 items-center justify-between">
+            <a href="halaman utama.html" class="flex items-center">
+                <svg class="h-8 w-auto text-yellow-600" viewBox="0 0 28 24" fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                </svg>
+                <!-- Logo -->
+                <div class="flex items-center space-x-2">
+                    <!-- Placeholder foto bulat -->
+                    <div class="w-8 h-8 rounded-full bg-gray-300 overflow-hidden">
+                        <img src="madu alam .png" alt="Logo" class="w-full h-full object-cover" />
+                    </div>
+                    <span class="text-xl font-bold">REALMADU</span>
+                </div>
+            </a>
+        </div>
+    </div>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>REALMADU.com - Checkout</title>
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+</header>
+
+<body class="bg-gray-50">
+    <main class="max-w-xl mx-auto p-6 bg-white mt-10 rounded shadow">
+        <h1 class="text-2xl font-bold mb-6" style="text-align: center;">Checkout</h1>
+        <div id="product-info" class="mb-6">
+            <!-- Info produk akan muncul di sini -->
+        </div>
+
+        <form id="checkout-form" class="space-y-4">
+            <div>
+                <label for="name" class="block font-semibold mb-1">Nama Lengkap</label>
+                <input id="name" name="name" type="text" required class="w-full border px-3 py-2 rounded" />
+            </div>
+            <div>
+                <label for="address" class="block font-semibold mb-1">Alamat Pengiriman</label>
+                <textarea id="address" name="address" required class="w-full border px-3 py-2 rounded"></textarea>
+            </div>
+            <div>
+                <label for="payment" class="block font-semibold mb-1">Metode Pembayaran</label>
+                <select id="payment" name="payment" required class="w-full border px-3 py-2 rounded">
+                    <option value="">Transfer Bank</option>
+                    <option value="OVO">OVO</option>
+                    <option value="GOPAY">GOPAY</option>
+                    <option value="DANA">DANA</option>
+                </select>
+            </div>
+            <button type="submit" class="bg-yellow-500 text-white px-4 py-2 rounded hover:bg-yellow-600">
+                Konfirmasi Pembayaran
+            </button>
+        </form>
+    </main>
+
+    <script>
+        // Ambil data produk checkout dari localStorage
+        const checkoutData = JSON.parse(localStorage.getItem('checkout'));
+        const productInfoDiv = document.getElementById('product-info');
+        const form = document.getElementById('checkout-form');
+
+        if (!checkoutData) {
+            productInfoDiv.innerHTML = '<p class="text-red-600">Tidak ada produk yang dipilih untuk checkout.</p>';
+            form.style.display = 'none';
+        } else {
+            productInfoDiv.innerHTML = `
+        <h2 class="text-xl font-semibold">${checkoutData.name}</h2>
+        <p>Harga: Rp ${checkoutData.price.toLocaleString()}</p>
+      `;
+        }
+
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            // Data form
+            const name = form.name.value.trim();
+            const address = form.address.value.trim();
+            const payment = form.payment.value;
+
+            if (!name || !address || !payment) {
+                alert('Mohon lengkapi semua data.');
+                return;
+            }
+
+            // Contoh simpan data order ke localStorage (atau kirim ke server via API)
+            const order = {
+                product: checkoutData,
+                customer: { name, address, payment },
+                date: new Date().toISOString(),
+            };
+            localStorage.setItem('order', JSON.stringify(order));
+
+            alert('Terima kasih! Pesanan Anda telah diterima.');
+            // Bersihkan checkout dan arahkan ke halaman lain, misal homepage
+            localStorage.removeItem('checkout');
+            window.location.href = 'index.html';
+        });
+    </script>
+</body>
+
+</html>

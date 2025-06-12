@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>REALMADU.com - Checkout</title>
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+</head>
+
+<body class="bg-gray-50">
+    <header class="sticky top-0 z-50 bg-white shadow-sm">
+        <div class="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
+            <div class="flex h-16 items-center justify-between">
+                <a href="halaman utama.html" class="flex items-center">
+                    <svg class="h-8 w-auto text-yellow-600" viewBox="0 0 28 24" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                    </svg>
+                    <!-- Logo -->
+                    <div class="flex items-center space-x-2">
+                        <!-- Placeholder foto bulat -->
+                        <div class="w-8 h-8 rounded-full bg-gray-300 overflow-hidden">
+                            <img src="madu alam .png" alt="Logo" class="w-full h-full object-cover" />
+                        </div>
+                        <span class="text-xl font-bold">REALMADU</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-2xl mx-auto mt-10 px-4">
+        <h1 class="text-2xl font-bold text-gray-900 mb-6">Checkout</h1>
+        <div class="bg-white shadow rounded-lg p-6">
+
+            <!-- Form input data pelanggan (di atas produk) -->
+            <h2 class="text-lg font-semibold mb-2">Data Pengiriman</h2>
+            <form id="checkout-form" class="mb-6">
+                <label class="block mb-2">
+                    <span class="text-gray-700">Nama Lengkap</span>
+                    <input type="text" name="fullname" id="fullname" required
+                        class="mt-1 block w-full rounded border border-gray-300 p-2 focus:border-yellow-500 focus:ring focus:ring-yellow-200" />
+                </label>
+                <label class="block mb-2">
+                    <span class="text-gray-700">Nomor Telepon</span>
+                    <input type="tel" name="phone" id="phone" pattern="[0-9]{10,15}" required
+                        placeholder="Contoh: 081234567890"
+                        class="mt-1 block w-full rounded border border-gray-300 p-2 focus:border-yellow-500 focus:ring focus:ring-yellow-200" />
+                </label>
+                <label class="block mb-4">
+                    <span class="text-gray-700">Alamat Lengkap</span>
+                    <textarea name="address" id="address" rows="3" required
+                        class="mt-1 block w-full rounded border border-gray-300 p-2 focus:border-yellow-500 focus:ring focus:ring-yellow-200"></textarea>
+                </label>
+            </form>
+
+            <div id="checkout-item" class="mb-4">
+                <!-- Produk akan dimuat di sini -->
+            </div>
+            <hr class="my-4">
+
+            <h2 class="text-lg font-semibold mb-2">Metode Pembayaran</h2>
+            <select id="payment-method" class="w-full border rounded p-2 mb-4">
+                <option>Transfer Bank</option>
+                <option>OVO</option>
+                <option>GoPay</option>
+                <option>Dana</option>
+            </select>
+
+            <!-- Tombol Konfirmasi dan Bayar -->
+            <button id="pay-button"
+                class="w-full bg-yellow-500 text-white font-semibold py-2 px-4 rounded hover:bg-yellow-600 mb-3">
+                Konfirmasi dan Bayar
+            </button>
+
+            <!-- Tombol Kembali -->
+            <a href="halaman utama.html"
+                class="block text-center bg-gray-300 hover:bg-gray-400 text-gray-800 font-semibold py-2 px-4 rounded">
+                Kembali ke Beranda
+            </a>
+
+            <a href="halaman keranjang.html"
+                class="block text-center bg-gray-300 hover:bg-gray-400 text-gray-800 font-semibold py-2 px-4 rounded mt-2">
+                Kembali ke keranjang
+            </a>
+
+        </div>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const checkoutData = JSON.parse(localStorage.getItem('checkout')) || [];
+            const container = document.getElementById('checkout-item');
+
+            if (checkoutData.length === 0) {
+                container.innerHTML = '<p class="text-red-500">Tidak ada produk yang dipilih untuk checkout.</p>';
+                return;
+            }
+
+            let total = 0;
+            container.innerHTML = checkoutData.map(item => {
+                total += item.price;
+                return `
+          <div class="flex justify-between items-center mb-2">
+            <div>
+              <p class="text-sm text-gray-600">${item.name}</p>
+            </div>
+            <p class="text-sm text-gray-800">Rp ${item.price.toLocaleString()}</p>
+          </div>
+        `;
+            }).join('');
+
+            const totalDiv = document.createElement('div');
+            totalDiv.className = 'flex justify-between items-center mt-4 pt-4 border-t font-semibold';
+            totalDiv.innerHTML = `
+        <p>Total</p>
+        <p>Rp ${total.toLocaleString()}</p>
+      `;
+            container.appendChild(totalDiv);
+
+            // Tombol bayar dan validasi form
+            const payBtn = document.getElementById('pay-button');
+            const form = document.getElementById('checkout-form');
+
+            payBtn.addEventListener('click', () => {
+                if (!form.reportValidity()) {
+                    // Form belum valid
+                    return;
+                }
+
+                // Ambil data form
+                const fullname = form.fullname.value.trim();
+                const phone = form.phone.value.trim();
+                const address = form.address.value.trim();
+                const paymentMethod = document.getElementById('payment-method').value;
+
+                // Tampilkan ringkasan pembayaran
+                alert(`Terima kasih, ${fullname}!\n\nProduk akan dikirim ke:\n${address}\n\nNomor Telepon: ${phone}\nMetode Pembayaran: ${paymentMethod}\nTotal yang harus dibayar: Rp ${total.toLocaleString()}`);
+
+                // Setelah bayar bisa clear checkout dan cart
+                localStorage.removeItem('checkout');
+                localStorage.removeItem('cart');
+
+                // Redirect ke halaman utama
+                window.location.href = 'halaman utama.html';
+            });
+        });
+    </script>
+</body>
+
+</html>
